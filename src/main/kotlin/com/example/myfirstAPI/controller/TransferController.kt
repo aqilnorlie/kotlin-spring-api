@@ -1,5 +1,6 @@
 package com.example.myfirstAPI.controller
 
+import com.example.myfirstAPI.dto.TransactionDTO
 import com.example.myfirstAPI.model.TransactionModel
 import com.example.myfirstAPI.service.TransactionService
 import org.springframework.http.HttpStatus
@@ -25,5 +26,15 @@ class TransferController (private val transactionService: TransactionService){
     fun getAllTransfers() : List<TransactionModel>{
 
         return transactionService.getAll()
+    }
+
+    @GetMapping("/{transactionID}")
+    fun getTransfers(@PathVariable transactionID: Int) : TransactionModel{
+        return transactionService.getTransaction(transactionID)
+    }
+
+    @GetMapping("/dto/all")
+    fun getAllTransfersDTO(): List<TransactionDTO>{
+        return transactionService.getAllTransactions()
     }
 }

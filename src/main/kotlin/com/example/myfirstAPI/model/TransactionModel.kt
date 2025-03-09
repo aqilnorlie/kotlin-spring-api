@@ -1,5 +1,7 @@
 package com.example.myfirstAPI.model
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
 
@@ -12,6 +14,11 @@ open class TransactionModel (
     val id : Int = 0,
     val targetAccount : String,
     val value : Double,
-    val description: String = ""
+    val description: String = "",
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    @JsonBackReference
+    val customer: CustomerModel
 
 )

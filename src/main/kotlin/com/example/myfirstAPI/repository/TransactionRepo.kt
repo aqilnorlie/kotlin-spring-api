@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface TransactionRepo: JpaRepository<TransactionModel, Int> {
 
 
+
 }
